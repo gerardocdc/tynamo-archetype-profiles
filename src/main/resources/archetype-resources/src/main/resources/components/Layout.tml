@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:p="tapestry:parameter">
+
+<head>
+    <title>${title}</title>
+    <t:if test="heading">
+        <meta name="heading" content="${heading}"/>
+    </t:if>
+    <t:if test="menu">
+        <meta name="menu" content="${menu}"/>
+    </t:if>
+    <t:if test="headBound">
+        <t:delegate to="head"/>
+    </t:if>
+
+</head>
+
+<body id="${bodyId}">
+
+<div id="wrapper">
+    <div id="top-menu">
+        <div style="text-align:right;"><t:security.loginlink /></div>
+    </div>
+
+    <div id="header">
+
+        <h1>Welcome!</h1>
+
+        <div id="quick-search">
+        </div>
+
+        <div id="main-menu">
+            <t:if test="tabsBound">
+                <t:delegate to="tabs"/>
+                <p:else>
+                    <li>
+                        <t:mainmenu/>
+                    </li>
+                </p:else>
+            </t:if>
+        </div>
+    </div>
+
+    <div class="${mainCssClass}" id="main">
+        <div id="sidebar">
+            <t:if test="sidebarBound">
+                <t:delegate to="sidebar"/>
+            </t:if>
+        </div>
+
+        <div id="content">
+            <t:body/>
+        </div>
+
+    </div>
+
+    <div id="ajax-indicator" style="display:none;"><span>Loading...</span></div>
+
+    <div id="footer">
+        Powered by Tynamo. Developed by Amneris
+    </div>
+</div>
+</body>
+
+</html>

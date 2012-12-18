@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<t:layout title="title" xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd" xmlns:p="tapestry:parameter">
+
+
+	<h2>${title}</h2>
+
+	<br/>
+
+	<t:alerts/>
+
+	<t:form clientValidation="true" validate="bean">
+		<t:errors/>
+
+		<div class="box">
+			<t:beaneditor object="mb:bean" t:mixins="tynamo/BeanModelAdvisor" beanmodeladvisor.key="add"/>
+
+			<br/>
+
+			<div class="t-beaneditor-row">
+				<t:submit event="continue" class="button" value="${message:org.tynamo.i18n.apply}"/>
+				<t:submit event="return" class="button" value="${message:org.tynamo.i18n.applyAndReturn}"/>
+				&nbsp; or &nbsp;
+				<t:eventlink class="button" style="color:red; font-weight:bold;" t:id="cancel">
+					${message:org.tynamo.i18n.cancel}
+				</t:eventlink>
+			</div>
+		</div>
+	</t:form>
+
+	<p:sidebar>
+		<h3>Menu</h3>
+		<a style="font-weight:bolder;margin-left:10px" t:type="PageLink" page="List" context="beanType">${listAllLinkMessage}</a>
+	</p:sidebar>
+
+</t:layout>
